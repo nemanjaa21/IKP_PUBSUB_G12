@@ -51,6 +51,17 @@ TopicSub Dequeue(struct Queue* queue)
 		return ts;
 	}
 }
+
+struct MessageQueue* CreateMessageQueue(unsigned kapacitet)
+{
+	struct MessageQueue* queue = (struct MessageQueue*) malloc(sizeof(struct MessageQueue));
+	queue->kapacitet = kapacitet;
+	queue->prvi = queue->velicina = 0;
+	queue->poslednji = kapacitet - 1;
+	queue->niz = (TopicMessage*)malloc(queue->kapacitet * sizeof(TopicMessage));
+	return queue;
+}
+
 int IsFullMessageQueue(struct MessageQueue* queue)
 {
 	return (queue->velicina == queue->kapacitet);
