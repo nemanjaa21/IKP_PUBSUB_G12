@@ -10,12 +10,7 @@
 
 
 #define SAFE_DELETE_HANDLE(h) {if(h)CloseHandle(h);}
-///<summary>
-/// Generates Message Struct with a header containing the lenght of a message.
-///</summary>
-///<param name ="message">Message.</param>
-///<param name ="len">Length of a message.</param>
-///<returns>Message Struct created.</returns>
+
 MessageStruct* GenerateMessageStruct(char* message, int len) {
 
 	MessageStruct* messageStruct = (MessageStruct *)(malloc(sizeof(MessageStruct)));
@@ -26,10 +21,7 @@ MessageStruct* GenerateMessageStruct(char* message, int len) {
 	return messageStruct;
 
 }
-///<summary>
-/// Initializes sockets.
-///</summary>
-///<returns>Error bool.</returns>
+
 bool InitializeWindowsSockets()
 {
 	WSADATA wsaData;

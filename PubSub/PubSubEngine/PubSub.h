@@ -34,11 +34,7 @@ void AddTopics(Queue*);
 
 
 
-///<summary>
-/// Adds toppics to queue.
-///</summary>
-///<param name ="queue">Pointer to queue.</param>
-///<returns>No return value.</returns>
+
 void AddTopics(Queue* queue) {
 
 	Enqueue(queue, "Plivanje");
@@ -48,11 +44,7 @@ void AddTopics(Queue* queue) {
 	Enqueue(queue, "Tehnologija");
 }
 
-///<summary>
-/// Receiving connection message from clients. 
-///</summary>
-///<param name ="acceptedSocket">Accepted socket.</param>
-///<returns>Type of connected client('p' or 's').</returns>
+
 char Connect(SOCKET acceptedSocket) {
 	char recvbuf[DEFAULT_BUFLEN];
 	char *recvRes;
@@ -107,13 +99,7 @@ char Connect(SOCKET acceptedSocket) {
 
 
 
-///<summary>
-/// Sends a message through socket. Made for making sure the whole message has been sent.
-///</summary>
-///<param name ="connectSocket">Socket for sending message.</param>
-///<param name ="message">Message to send.</param>
-///<param name ="messageSize">Size of a message.</param>
-///<returns>Return value of Select function if select is impossible, otherwise 0 or 1.</returns>
+
 int SendFunction(SOCKET connectSocket, char* message, int messageSize) {
 
 	int selectResult = SelectFunction(connectSocket, 'w');
@@ -144,12 +130,7 @@ int SendFunction(SOCKET connectSocket, char* message, int messageSize) {
 	
 }
 
-///<summary>
-/// Receives a message through socket. Made for making sure the whole message has been received.
-///</summary>
-///<param name ="acceptedSocket">Socket for receiving message.</param>
-///<param name ="recvbuf">Buffer to receive message.</param>
-///<returns>Received message. Eror type in case of error.</returns>
+
 char* ReceiveFunction(SOCKET acceptedSocket, char* recvbuf) {
 
 	int iResult;
@@ -188,14 +169,7 @@ char* ReceiveFunction(SOCKET acceptedSocket, char* recvbuf) {
 		
 }
 
-///<summary>
-/// Deletes subscriber from queue when he closes connection.
-/// Prevents trying to send a message on closed socket.
-///</summary>
-///<param name ="queue">Queue to delete from.</param>
-///<param name ="acceptedSocket">Subscriber's socket.</param>
-///<param name ="subscribers">Array of Subscribers(socket + semaphore).</param>
-///<returns>No return value.</returns>
+
 void SubscriberShutDown(Queue* queue, SOCKET acceptedSocket, struct Subscriber subscribers[]) {
 	for (int i = 0; i < queue->size; i++)
 	{
@@ -229,13 +203,7 @@ void SubscriberShutDown(Queue* queue, SOCKET acceptedSocket, struct Subscriber s
 	}
 }
 
-///<summary>
-/// Puts subscriber in queue when he subscribes on certain topic.
-///</summary>
-///<param name ="queue">Queue to add to.</param>
-///<param name ="sub">Subscriber's socket.</param>
-///<param name ="topic">Topic subscriber has subscribed to.</param>
-///<returns>No return value.</returns>
+
 void Subscribe(struct Queue* queue, SOCKET sub, char* topic) {
 	for (int i = 0; i < queue->size; i++) {
 		if (!strcmp(queue->array[i].topic, topic)) {
@@ -246,13 +214,7 @@ void Subscribe(struct Queue* queue, SOCKET sub, char* topic) {
 	}
 }
 
-///<summary>
-/// Puts message on message queue when publihser publishes on certain topic.
-///</summary>
-///<param name ="message_queue">Queue to add to.</param>
-///<param name ="message">Published message.</param>
-///<param name ="topic">Topic publisher has published to.</param>
-///<returns>No return value.</returns>
+
 void Publish(struct MessageQueue* messageQueue, char* topic, char* message,int ordinalNumber) {
 	
 	struct TopicMessage item;
@@ -266,13 +228,7 @@ void Publish(struct MessageQueue* messageQueue, char* topic, char* message,int o
 }
 
 
-///<summary>
-/// Select function used in nonblocking mode.
-/// Waits until send or receive is possible.
-///</summary>
-///<param name ="lisenSocket">Socket put in FD_SET.</param>
-///<param name ="rw">Char used to inform wich mode is used(read or write).</param>
-///<returns>Returns -1 if server closed connection.</returns>
+
 int SelectFunction(SOCKET listenSocket, char rw) {
 	int iResult = 0;
 	do {
