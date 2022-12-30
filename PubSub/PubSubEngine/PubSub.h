@@ -37,11 +37,11 @@ void AddTopics(Queue*);
 
 void AddTopics(Queue* queue) {
 
-	Enqueue(queue, "Plivanje");
-	Enqueue(queue, "Muzika");
+	Enqueue(queue, "Swimming");
+	Enqueue(queue, "Music");
 	Enqueue(queue, "Sport");
-	Enqueue(queue, "Fakultet");
-	Enqueue(queue, "Tehnologija");
+	Enqueue(queue, "College");
+	Enqueue(queue, "Technology");
 }
 
 

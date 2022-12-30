@@ -21,7 +21,7 @@ struct Queue* CreateQueue(unsigned capacity)
 	struct Queue* queue = (struct Queue*) malloc(sizeof(struct Queue));
 	queue->capacity = capacity;
 	queue->front = queue->size = 0;
-	queue->rear = capacity - 1;  // This is important, see the Enqueue 
+	queue->rear = capacity - 1;  
 	queue->array = (TopicSubscribers*)malloc(queue->capacity * sizeof(TopicSubscribers));
 	return queue;
 }
@@ -32,7 +32,7 @@ struct MessageQueue* CreateMessageQueue(unsigned capacity)
 	struct MessageQueue* queue = (struct MessageQueue*) malloc(sizeof(struct MessageQueue));
 	queue->capacity = capacity;
 	queue->front = queue->size = 0;
-	queue->rear = capacity - 1;  // This is important, see the enqueue 
+	queue->rear = capacity - 1;   
 	queue->array = (TopicMessage*)malloc(queue->capacity * sizeof(TopicMessage));
 	return queue;
 }
@@ -65,9 +65,7 @@ int IsEmptyMessageQueue(struct MessageQueue*  queue)
 void Enqueue(struct Queue* queue, char* topic)
 {
 	TopicSubscribers item;
-	//item.topic = topic;
 	strcpy(item.topic, topic);
-	//item.subs_array;
 	item.size = 0;
 
 	if (IsFull(queue))
@@ -86,7 +84,6 @@ void EnqueueMessageQueue(struct MessageQueue* queue, TopicMessage topic)
 	queue->rear = (queue->rear + 1) % queue->capacity;
 	queue->array[queue->rear] = topic;
 	queue->size = queue->size + 1;
-	//printf("%s Enqueued to queue\n", topic.topic);
 }
 
 

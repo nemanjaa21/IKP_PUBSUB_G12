@@ -177,11 +177,11 @@ int SelectFunction(SOCKET listenSocket, char rw) {
 
 void PrintMenu() {
 	printf("\nChoose a topic to subscribe to: \n");
-	printf("\t1.Sport\n");
-	printf("\t2.Fashion\n");
-	printf("\t3.Politics\n");
-	printf("\t4.News \n");
-	printf("\t5.Show buisness \n\n");
+	printf("\t1.Swimming\n");
+	printf("\t2.Music\n");
+	printf("\t3.Sport\n");
+	printf("\t4.College \n");
+	printf("\t5.Technology \n\n");
 	printf("Press X if you want to close connection\n");
 }
 
@@ -189,24 +189,24 @@ void PrintMenu() {
 void ProcessInputAndGenerateMessage(char input, char* message) {
 	switch (input) {
 	case '1':
+		strcpy(message, "s:Swimming");
+		printf("You subscribed on Swimming.\n");
+		break;
+	case '2':
+		strcpy(message, "s:Music");
+		printf("You subscribed on Music.\n");
+		break;
+	case '3':
 		strcpy(message, "s:Sport");
 		printf("You subscribed on Sport.\n");
 		break;
-	case '2':
-		strcpy(message, "s:Fashion");
-		printf("You subscribed on Fashion.\n");
-		break;
-	case '3':
-		strcpy(message, "s:Politics");
-		printf("You subscribed on Politics.\n");
-		break;
 	case '4':
-		strcpy(message, "s:News");
-		printf("You subscribed on News.\n");
+		strcpy(message, "s:College");
+		printf("You subscribed on College.\n");
 		break;
 	case '5':
-		strcpy(message, "s:Show business");
-		printf("You subscribed on Show business.\n");
+		strcpy(message, "s:Technology");
+		printf("You subscribed on Technology.\n");
 		break;
 	default:
 		break;
