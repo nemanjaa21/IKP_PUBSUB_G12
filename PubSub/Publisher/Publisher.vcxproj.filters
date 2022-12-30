@@ -3,4 +3,7 @@
   <ItemGroup>
     <ClCompile Include="Publisher.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Publisher.h" />
+  </ItemGroup>
 </Project>
