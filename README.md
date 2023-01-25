@@ -1,1 +1,1 @@
-# IKP_PUBSUB
+# PUBSUB servis
